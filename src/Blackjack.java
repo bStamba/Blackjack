@@ -3,9 +3,10 @@ import java.util.*;
 public class Blackjack {
 
     private ArrayList<Card> currentDeck = new ArrayList<>();
+    private ArrayList<Card> playersHand = new ArrayList<>();
+    private ArrayList<Card> dealersHand = new ArrayList<>();
     private Player player1 = new Player();
-    private Hand playerHand = new Hand();
-    private Hand dealerHand = new Hand();
+    private Hand handHelper = new Hand();
     Deck theDeck = new Deck();
 
     public void startGame(){
@@ -20,17 +21,28 @@ public class Blackjack {
 
     public void deal(){
         currentDeck = theDeck.getDeck();
+
+        //Deal the starting 4 cards unless we don't have enough, then we will shuffle
+        //but we will keep the cards that were remaining on top.
         if(currentDeck.size() > 3){
             for(int i = 0; i < 2; i++) {
-                playerHand.setPlayerHand(currentDeck.get(0));
+                handHelper.setPlayerHand(currentDeck.get(0));
                 currentDeck.remove(0);
-                dealerHand.setDealerHand(currentDeck.get(0));
+                handHelper.setDealerHand(currentDeck.get(0));
                 currentDeck.remove(0);
             }
         }
         else{
             theDeck.shuffleDeck(currentDeck);
+            currentDeck = theDeck.getDeck();
+            for(int i = 0; i < 2; i++) {
+                handHelper.setPlayerHand(currentDeck.get(0));
+                currentDeck.remove(0);
+                handHelper.setDealerHand(currentDeck.get(0));
+                currentDeck.remove(0);
+            }
         }
+
     }
 
     public void getBets(){

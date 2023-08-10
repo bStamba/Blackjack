@@ -7,18 +7,21 @@ import java.util.ArrayList;
 
 public class BlackjackMain implements Runnable {
 
+    BlackjackGUI gui = new BlackjackGUI();
     public static void main(String[] args){
 
         new Thread(new BlackjackMain()).start();
-        BlackjackGUI gui = new BlackjackGUI();
-
         Blackjack bj = new Blackjack();
+
         bj.startGame();
     }
 
+
     @Override
     public void run() {
-
+        while(true){
+            gui.repaint();
+        }
     }
 
     /**

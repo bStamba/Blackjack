@@ -6,7 +6,7 @@ public class Player implements Serializable {
     private String playerName;
     private int bankroll;
     private int playerBet;
-    //private Hand playerHand;
+    private Hand playerHand;
 
     public void setName(String playerName){
         this.playerName = playerName;
@@ -30,5 +30,9 @@ public class Player implements Serializable {
 
     public int getPlayerBet(){
         return this.playerBet;
+    }
+
+    public void setPlayerHand(Card card){
+
     }
 }

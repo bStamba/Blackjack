@@ -45,8 +45,4 @@ public class Deck {
     public ArrayList<Card> getDeck(){
         return myDeck;
     }
-
-    //for(Card c : myDeck){
-    //    System.out.println(c.getCardName() + " " + c.getCardSuit() + " " + c.getCardValue());
-    //}
 }
